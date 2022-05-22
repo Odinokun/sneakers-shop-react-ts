@@ -3,6 +3,59 @@ import React from 'react';
 function App() {
   return (
     <div className="wrapper">
+      <div className="overlay">
+        <div className="drawer">
+          <div className="drawerHeader">
+            <h2 className="drawerTitle">Cart</h2>
+            <button className="cartItemButton">
+              <img src="/img/btn-remove.svg" alt="remove"/>
+            </button>
+          </div>
+
+          <div className="items">
+            <div className="cartItem">
+              <img className="cartItemImage" src="img/sneakers/1.jpg" alt="sneakers"/>
+              <div className="cartItemInfo">
+
+                <h5 className="cartItemTitle">Men Sneakers Nike Blazer Mid Suede</h5>
+                <div className="cartItemPrice"><b>$ 127</b></div>
+              </div>
+              <button className="cartItemButton">
+                <img src="/img/btn-remove.svg" alt="remove"/>
+              </button>
+            </div>
+            <div className="cartItem">
+              <img className="cartItemImage" src="img/sneakers/5.jpg" alt="sneakers"/>
+              <div className="cartItemInfo">
+
+                <h5 className="cartItemTitle">Men Sneakers Nike Blazer Mid Suede</h5>
+                <div className="cartItemPrice"><b>$ 1237</b></div>
+              </div>
+              <button className="cartItemButton">
+                <img src="/img/btn-remove.svg" alt="remove"/>
+              </button>
+            </div>
+          </div>
+
+          <ul className="drawerFooter">
+            <li className="drawerFooterItem">
+              <span className="drawerFooterTitle">Total:</span>
+              <div className="drawerFooterDecor"></div>
+              <div className="drawerFooterPrice">$ 3541</div>
+            </li>
+            <li className="drawerFooterItem">
+              <span className="drawerFooterTitle">Bonus 10%:</span>
+              <div className="drawerFooterDecor"></div>
+              <div className="drawerFooterPrice">$ 35</div>
+            </li>
+          </ul>
+          <button className="drawerFooterBtn">
+            <span>Buy all</span>
+            <img src="/img/arrow-right.svg" alt="arrow right"/>
+          </button>
+        </div>
+      </div>
+
       <header className='header'>
         <div className="headerLeft">
           <img width={40} height={40} src='/img/logo.png' alt="React Snikers"/>
@@ -39,9 +92,20 @@ function App() {
       </header>
 
       <div className="content">
-        <h1 className="contentTitle">All sneakers</h1>
+        <header className="contentHeader">
+          <h1 className="contentTitle">All sneakers</h1>
+          <div className="search">
+            <button>
+              <img src="img/search.svg" alt="search icon"/>
+            </button>
+            <input type="text" placeholder="Search..."/>
+          </div>
+        </header>
         <div className="cardWrapper">
           <div className="card">
+            <div className="favorite">
+              <img src="/img/heart-unliked.svg" alt="unliked"/>
+            </div>
             <img className="cardImage" src="img/sneakers/1.jpg" alt="sneakers"/>
             <h5 className="cardTitle">Men Sneakers Nike Blazer Mid Suede</h5>
             <div className="cardInfo">
@@ -50,12 +114,15 @@ function App() {
                 <b>$ 127</b>
               </div>
               <button className="button">
-                <img width={11} height={11} src="img/cross.svg" alt="cross"/>
+                <img src="/img/btn-plus.svg" alt="plus"/>
               </button>
             </div>
           </div>
           <div className="card">
-            <img className="cardImage" src="img/sneakers/2.jpg" alt="sneakers"/>
+            <div className="favorite">
+              <img src="/img/heart-liked.svg" alt="unliked"/>
+            </div>
+            <img className="cardImage" src="img/sneakers/10.jpg" alt="sneakers"/>
             <h5 className="cardTitle">Men Sneakers Nike Blazer Mid Suede</h5>
             <div className="cardInfo">
               <div className="cardPrice">
@@ -63,59 +130,6 @@ function App() {
                 <b>$ 127</b>
               </div>
               <button className="button">
-                <img width={11} height={11} src="img/cross.svg" alt="cross"/>
-              </button>
-            </div>
-          </div>
-          <div className="card">
-            <img className="cardImage" src="img/sneakers/3.jpg" alt="sneakers"/>
-            <h5 className="cardTitle">Men Sneakers Nike Blazer Mid Suede</h5>
-            <div className="cardInfo">
-              <div className="cardPrice">
-                <span>Price:</span>
-                <b>$ 127</b>
-              </div>
-              <button className="button">
-                <img width={11} height={11} src="img/cross.svg" alt="cross"/>
-              </button>
-            </div>
-          </div>
-          <div className="card">
-            <img className="cardImage" src="img/sneakers/1.jpg" alt="sneakers"/>
-            <h5 className="cardTitle">Men Sneakers Nike Blazer Mid Suede</h5>
-            <div className="cardInfo">
-              <div className="cardPrice">
-                <span>Price:</span>
-                <b>$ 127</b>
-              </div>
-              <button className="button">
-                <img width={11} height={11} src="img/cross.svg" alt="cross"/>
-              </button>
-            </div>
-          </div>
-          <div className="card">
-            <img className="cardImage" src="img/sneakers/1.jpg" alt="sneakers"/>
-            <h5 className="cardTitle">Men Sneakers Nike Blazer Mid Suede</h5>
-            <div className="cardInfo">
-              <div className="cardPrice">
-                <span>Price:</span>
-                <b>$ 127</b>
-              </div>
-              <button className="button">
-                <img width={11} height={11} src="img/cross.svg" alt="cross"/>
-              </button>
-            </div>
-          </div>
-          <div className="card">
-            <img className="cardImage" src="img/sneakers/1.jpg" alt="sneakers"/>
-            <h5 className="cardTitle">Men Sneakers Nike Blazer Mid Suede</h5>
-            <div className="cardInfo">
-              <div className="cardPrice">
-                <span>Price:</span>
-                <b>$ 127</b>
-              </div>
-              <button className="button">
-                <img width={11} height={11} src="img/cross.svg" alt="cross"/>
               </button>
             </div>
           </div>
