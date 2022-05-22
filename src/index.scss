@@ -1,6 +1,154 @@
-body {
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
-  font-family: system-ui;
+}
+
+body {
+  font-family: 'Inter', system-ui;
+  margin: 0;
+  background-color: #e7f6ff;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.wrapper {
+  max-width: 1080px;
+  margin: 50px auto;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, .04);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+
+  img {
+    display: block;
+    margin-right: 15px;
+  }
+}
+
+.headerInfoTitle {
+  text-transform: uppercase;
+}
+
+.headerInfoSlogan {
+  color: #9d9d9d;
+}
+
+.headerRight {
+  display: flex;
+  list-style: none;
+
+  li {
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+    cursor: pointer;
+
+    span {
+      margin-left: 10px;
+    }
+  }
+}
+
+.content {
+  padding: 40px;
+}
+
+.contentTitle {
+  margin-bottom: 40px;
+}
+
+.cardWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: calc(100% + 40px);
+}
+
+.card {
+  width: calc(25% - 40px);
+  margin-right: 40px;
+  margin-bottom: 40px;
+  padding: 20px 30px 30px 30px;
+  cursor: pointer;
+  transition: .5s;
+  border: 1px solid #eaeaea;
+  border-radius: 40px;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0);
+
+  &:hover {
+    box-shadow: 0 14px 30px rgba(0, 0, 0, .05);
+  }
+}
+
+.cardImage {
+  display: block;
+  width: 100%;
+  margin-bottom: 14px;
+}
+
+.cardInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cardTitle {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  margin-bottom: 14px;
+  color: #000;
+}
+
+.cardPrice {
+  display: flex;
+  flex-direction: column;
+
+  span {
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 13px;
+    margin-bottom: 2px;
+    text-transform: uppercase;
+    color: #bdbdbd;
+  }
+
+  b {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 17px;
+    color: #000;
+  }
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  cursor: pointer;
+  border: 1px solid #f2f2f2;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: none;
+
+  img {
+    user-select: none;
+  }
 }
