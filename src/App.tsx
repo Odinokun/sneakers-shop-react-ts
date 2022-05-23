@@ -1,9 +1,10 @@
 import React from 'react';
+import {Card} from './components/Card';
 
 function App() {
   return (
     <div className="wrapper">
-      <div className="overlay">
+      <div style={{display: 'none'}} className="overlay">
         <div className="drawer">
           <div className="drawerHeader">
             <h2 className="drawerTitle">Cart</h2>
@@ -102,37 +103,11 @@ function App() {
           </div>
         </header>
         <div className="cardWrapper">
-          <div className="card">
-            <div className="favorite">
-              <img src="/img/heart-unliked.svg" alt="unliked"/>
-            </div>
-            <img className="cardImage" src="img/sneakers/1.jpg" alt="sneakers"/>
-            <h5 className="cardTitle">Men Sneakers Nike Blazer Mid Suede</h5>
-            <div className="cardInfo">
-              <div className="cardPrice">
-                <span>Price:</span>
-                <b>$ 127</b>
-              </div>
-              <button className="button">
-                <img src="/img/btn-plus.svg" alt="plus"/>
-              </button>
-            </div>
-          </div>
-          <div className="card">
-            <div className="favorite">
-              <img src="/img/heart-liked.svg" alt="unliked"/>
-            </div>
-            <img className="cardImage" src="img/sneakers/10.jpg" alt="sneakers"/>
-            <h5 className="cardTitle">Men Sneakers Nike Blazer Mid Suede</h5>
-            <div className="cardInfo">
-              <div className="cardPrice">
-                <span>Price:</span>
-                <b>$ 127</b>
-              </div>
-              <button className="button">
-              </button>
-            </div>
-          </div>
+          <Card/>
+          <Card/>
+          <Card/>
+          <Card/>
+          <Card/>
         </div>
       </div>
     </div>
