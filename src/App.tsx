@@ -43,6 +43,8 @@ function App() {
                     imgUrl={item.imgUrl}
                     title={item.title}
                     price={item.price}
+                    onClickFavorite={()=>console.log('Add to favorite')}
+                    onClickPlus={()=>console.log('Push to plus button')}
               />
             )
           )}

@@ -6,19 +6,17 @@ type CardType = {
   imgUrl: string
   title: string
   price: number
+  onClickPlus: () => void
+  onClickFavorite: () => void
 }
 
 export const Card = (props: CardType) => {
 
-  const onClickHandler = () => {
-    console.log(props.title)
-  }
-
   return (
     <div className={s.card}>
-      <div className={s.favorite}>
+      <button onClick={props.onClickFavorite} className={s.favorite}>
         <img src="/img/heart-unliked.svg" alt="unliked"/>
-      </div>
+      </button>
       <img className={s.cardImage} src={props.imgUrl} alt="sneakers"/>
       <h5 className={s.cardTitle}>{props.title}</h5>
       <div className={s.cardInfo}>
@@ -26,7 +24,7 @@ export const Card = (props: CardType) => {
           <span>Price:</span>
           <b>$ {props.price}</b>
         </div>
-        <button className={s.button} onClick={onClickHandler}>
+        <button className={s.button} onClick={props.onClickPlus}>
           <img src="/img/btn-plus.svg" alt="plus"/>
         </button>
       </div>
