@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import s from "./card.module.scss";
 
 type CardType = {
@@ -6,11 +6,15 @@ type CardType = {
   imgUrl: string
   title: string
   price: number
-  onClickPlus: () => void
   onClickFavorite: () => void
 }
 
 export const Card = (props: CardType) => {
+  const [isAdded, setIsAdded] = useState(false);
+
+  const onClickPlus = () => {
+    setIsAdded(!isAdded)
+  }
 
   return (
     <div className={s.card}>
@@ -24,8 +28,8 @@ export const Card = (props: CardType) => {
           <span>Price:</span>
           <b>$ {props.price}</b>
         </div>
-        <button className={s.button} onClick={props.onClickPlus}>
-          <img src="/img/btn-plus.svg" alt="plus"/>
+        <button className={s.button} onClick={onClickPlus}>
+          <img src={isAdded ? '/img/btn-checked.svg' : '/img/btn-plus.svg'} alt="plus"/>
         </button>
       </div>
     </div>
