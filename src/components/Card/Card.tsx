@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import s from "./card.module.scss";
 
-type CardType = {
-  id: string
+export type CardType = {
+  id: number
   imgUrl: string
   title: string
   price: number

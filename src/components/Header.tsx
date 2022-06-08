@@ -1,6 +1,10 @@
 import React from "react";
 
-export const Header = () => {
+type PropsType = {
+  onClickCart: () => void
+}
+
+export const Header = (props: PropsType) => {
   return (
     <header className='header'>
       <div className="headerLeft">
@@ -12,7 +16,7 @@ export const Header = () => {
       </div>
 
       <ul className="headerRight">
-        <li>
+        <li className="basketBtn" onClick={props.onClickCart}>
           <img src="/img/cart.svg" alt="cart icon"/>
           <span>$ 1205</span>
         </li>

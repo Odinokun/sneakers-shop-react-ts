@@ -108,13 +108,13 @@ body {
   height: 32px;
   cursor: pointer;
   transition: opacity .3s ease-in-out;
-  opacity: .5;
+  opacity: 1;
   border: none;
   background-color: transparent;
   box-shadow: none;
 
   &:hover {
-    opacity: 1;
+    opacity: .5;
   }
 
   img {
@@ -305,4 +305,8 @@ body {
   display: flex;
   flex-wrap: wrap;
   width: calc(100% + 40px);
+}
+
+.basketBtn {
+  cursor: pointer;
 }
