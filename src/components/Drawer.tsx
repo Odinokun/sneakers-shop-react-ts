@@ -1,43 +1,43 @@
 import React from "react";
+import {cardObj} from '../App';
 
 type PropsType = {
   onClickCart: () => void
+  items: Array<cardObj>
 }
 
-export const Drawer = (props: PropsType) => {
+export const Drawer = ({onClickCart, items}: PropsType) => {
   return (
-    <div className="overlay">
+    <>
+      <div className="overlay" onClick={onClickCart}></div>
       <div className="drawer">
         <div className="drawerHeader">
           <h2 className="drawerTitle">Cart</h2>
-          <button className="cartItemButton" onClick={props.onClickCart}>
+          <button
+            className="cartItemButton"
+            onClick={onClickCart}
+          >
             <img src="/img/btn-remove.svg" alt="close"/>
           </button>
         </div>
 
         <div className="items">
-          <div className="cartItem">
-            <img className="cartItemImage" src="img/sneakers/1.jpg" alt="sneakers"/>
-            <div className="cartItemInfo">
+          {
+            items.map((obj: cardObj) => (
+              <div className="cartItem" key={obj.id}>
+                <img className="cartItemImage"
+                     src={obj.imgUrl} alt="sneakers"/>
+                <div className="cartItemInfo">
 
-              <h5 className="cartItemTitle">Men Sneakers Nike Blazer Mid Suede</h5>
-              <div className="cartItemPrice"><b>$ 127</b></div>
-            </div>
-            <button className="cartItemButton">
-              <img src="/img/btn-remove.svg" alt="remove"/>
-            </button>
-          </div>
-          <div className="cartItem">
-            <img className="cartItemImage" src="img/sneakers/5.jpg" alt="sneakers"/>
-            <div className="cartItemInfo">
-
-              <h5 className="cartItemTitle">Men Sneakers Nike Blazer Mid Suede</h5>
-              <div className="cartItemPrice"><b>$ 1237</b></div>
-            </div>
-            <button className="cartItemButton">
-              <img src="/img/btn-remove.svg" alt="remove"/>
-            </button>
-          </div>
+                  <h5 className="cartItemTitle">{obj.title}</h5>
+                  <div className="cartItemPrice"><b>$ {obj.price}</b></div>
+                </div>
+                <button className="cartItemButton">
+                  <img src="/img/btn-remove.svg" alt="remove"/>
+                </button>
+              </div>
+            ))
+          }
         </div>
 
         <ul className="drawerFooter">
@@ -57,6 +57,6 @@ export const Drawer = (props: PropsType) => {
           <img src="/img/arrow-right.svg" alt="arrow right"/>
         </button>
       </div>
-    </div>
+    </>
   )
 }

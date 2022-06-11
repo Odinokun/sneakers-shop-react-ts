@@ -64,7 +64,6 @@ body {
 .cartItem {
   display: flex;
   overflow: hidden;
-  align-items: center;
   margin-bottom: 20px;
   padding: 20px;
   border: 1px solid #f3f3f3;
@@ -106,6 +105,7 @@ body {
   flex: none;
   width: 32px;
   height: 32px;
+  padding: 0;
   cursor: pointer;
   transition: opacity .3s ease-in-out;
   opacity: 1;

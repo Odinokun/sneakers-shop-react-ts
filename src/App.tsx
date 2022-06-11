@@ -16,16 +16,25 @@ import {Drawer} from './components/Drawer';
 //   {"id": 10, "imgUrl": "/img/sneakers/10.jpg", "title": "Мужские Кроссовки Nike Kyrie Flytrap IV", "price": 11299}
 // ]
 
+export type cardObj = {
+  id: number
+  imgUrl: string
+  title: string
+  price: number
+}
+
 function App() {
 
+  //open card on aside after all price click
   const onClickCart = () => {
     setCartOpened(!cartOpened);
   }
 
   const [items, setItems] = useState([]);
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState<Array<cardObj>>([]);
   const [cartOpened, setCartOpened] = useState(false);
 
+  //first rendering product cart on first page load
   useEffect(() => {
     fetch('https://629f04bc8b939d3dc28c9f9a.mockapi.io/items')
       .then((res) => {
@@ -36,9 +45,15 @@ function App() {
       })
   }, [])
 
+  // added sneakers to card after cross click
+  const onAddToCart = (obj: cardObj) => {
+    // prev - it`s prevState your useState first argument
+    setCartItems(prev => [obj, ...prev]);
+  }
+
   return (
     <div className="wrapper">
-      {cartOpened && <Drawer onClickCart={onClickCart}/>}
+      {cartOpened && <Drawer items={cartItems} onClickCart={onClickCart}/>}
       <Header onClickCart={onClickCart}/>
 
       <div className="content">
@@ -58,7 +73,8 @@ function App() {
                     imgUrl={item.imgUrl}
                     title={item.title}
                     price={item.price}
-                    onClickFavorite={() => console.log('Add to favorite')}
+                    onClickFavorite={() => console.log('favorite')}
+                    onPlus={(obj) => onAddToCart(obj)}
               />
             )
           )}
