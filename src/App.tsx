@@ -72,7 +72,7 @@ function App() {
           </div>
         </header>
         <div className="cardWrapper">
-          {items.map((item: CardType) => (
+          {items.filter((item: CardType) => item.title.toLowerCase().includes(searchValue.toLowerCase())).map((item: CardType) => (
               <Card key={item.id}
                     id={item.id}
                     imgUrl={item.imgUrl}
