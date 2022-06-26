@@ -263,30 +263,6 @@ body {
   border: 1px solid #eaeaea;
   border-radius: 10px;
 
-  button {
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 45px;
-    height: 45px;
-    margin: auto;
-    cursor: pointer;
-    border: none;
-    background-color: transparent;
-    box-shadow: none;
-  }
-
-  img {
-    display: block;
-    width: 14px;
-    height: 14px;
-    pointer-events: none;
-  }
 
   input {
     position: absolute;
@@ -298,6 +274,56 @@ body {
     border: none;
     background-color: transparent;
     box-shadow: none;
+  }
+}
+
+.searchButton {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45px;
+  height: 45px;
+  margin: auto;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  box-shadow: none;
+
+  img {
+    display: block;
+    width: 14px;
+    height: 14px;
+    pointer-events: none;
+  }
+}
+
+.searchCloseButton {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45px;
+  height: 45px;
+  margin: auto;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  box-shadow: none;
+
+  img {
+    display: block;
+    width: 24px;
+    height: 24px;
+    pointer-events: none;
   }
 }
 
