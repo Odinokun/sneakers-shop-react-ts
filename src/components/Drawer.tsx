@@ -2,11 +2,12 @@ import React from "react";
 import {cardObj} from '../App';
 
 type PropsType = {
-  onClickCart: () => void
   items: Array<cardObj>
+  onClickCart: () => void
+  onRemoveItem: (id: number) => void
 }
 
-export const Drawer = ({onClickCart, items}: PropsType) => {
+export const Drawer = ({items, onClickCart, onRemoveItem}: PropsType) => {
   return (
     <>
       <div className="overlay" onClick={onClickCart}></div>
@@ -32,7 +33,7 @@ export const Drawer = ({onClickCart, items}: PropsType) => {
                   <h5 className="cartItemTitle">{obj.title}</h5>
                   <div className="cartItemPrice"><b>$ {obj.price}</b></div>
                 </div>
-                <button className="cartItemButton">
+                <button className="cartItemButton" onClick={() => onRemoveItem(obj.id)}>
                   <img src="/img/btn-remove.svg" alt="remove"/>
                 </button>
               </div>
