@@ -22,24 +22,39 @@ export const Drawer = ({items, onClickCart, onRemoveItem}: PropsType) => {
           </button>
         </div>
 
-        <div className="items">
-          {
-            items.map((obj: cardObj) => (
-              <div className="cartItem" key={obj.id}>
-                <img className="cartItemImage"
-                     src={obj.imgUrl} alt="sneakers"/>
-                <div className="cartItemInfo">
+        {
+          items.length > 0 ?
+            <div className="items">
+              {
+                items.map((obj: cardObj) => (
+                  <div className="cartItem" key={obj.id}>
+                    <img className="cartItemImage"
+                         src={obj.imgUrl} alt="sneakers"/>
+                    <div className="cartItemInfo">
 
-                  <h5 className="cartItemTitle">{obj.title}</h5>
-                  <div className="cartItemPrice"><b>$ {obj.price}</b></div>
-                </div>
-                <button className="cartItemButton" onClick={() => onRemoveItem(obj.id)}>
-                  <img src="/img/btn-remove.svg" alt="remove"/>
-                </button>
+                      <h5 className="cartItemTitle">{obj.title}</h5>
+                      <div className="cartItemPrice"><b>$ {obj.price}</b></div>
+                    </div>
+                    <button className="cartItemButton" onClick={() => onRemoveItem(obj.id)}>
+                      <img src="/img/btn-remove.svg" alt="remove"/>
+                    </button>
+                  </div>
+                ))
+              }
+            </div>
+            :
+            <div className="emptyBox">
+              <div className="emptyImage">
+                <img src="/img/empty-box.jpeg" alt="empty image"/>
               </div>
-            ))
-          }
-        </div>
+              <p>Your box is empty</p>
+              <button className="emptyButton" onClick={onClickCart}>
+                <img src="/img/arrow-right.svg" alt="arrow right"/>
+                <span>Take your choose</span>
+              </button>
+            </div>
+        }
+
 
         <ul className="drawerFooter">
           <li className="drawerFooterItem">
