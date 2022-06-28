@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 
 type PropsType = {
   onClickCart: () => void
@@ -16,12 +17,15 @@ export const Header = (props: PropsType) => {
       </div>
 
       <ul className="headerRight">
-        <li className="basketBtn" onClick={props.onClickCart}>
-          <img src="/img/cart.svg" alt="cart icon"/>
+        <li className="basketBtn headerRightMenuItem" onClick={props.onClickCart}>
+          <img src="/img/cart.svg" alt="cart"/>
           <span>$ 1205</span>
         </li>
-        <li>
-          <img src="/img/user.svg" alt="user icon"/>
+        <Link to="/favorites" className="headerRightMenuItem">
+          <img src="/img/favorite-heart.svg" alt="favorite"/>
+        </Link>
+        <li className="headerRightMenuItem">
+          <img src="/img/user.svg" alt="user"/>
         </li>
       </ul>
     </header>

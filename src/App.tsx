@@ -3,6 +3,7 @@ import axios from 'axios';
 import {Card, CardType} from './components/Card/Card';
 import {Header} from './components/Header';
 import {Drawer} from './components/Drawer';
+import {Route, Routes} from 'react-router-dom';
 
 export type cardObj = {
   id: number
@@ -19,6 +20,7 @@ function App() {
 
   const [items, setItems] = useState([]);
   const [cartItems, setCartItems] = useState<Array<cardObj>>([]);
+  // const [favorites, setFavorites] = useState<Array<cardObj>>([]);
   const [cartOpened, setCartOpened] = useState(false);
   const [searchValue, setSearchValue] = useState('');
 
@@ -47,6 +49,14 @@ function App() {
     setCartItems(prev => [obj, ...prev]);
   }
 
+  // added sneakers to favorites after heart click
+  const onAddToFavorites = (obj: cardObj) => {
+    // add items to cart array at mockapi
+    axios.post('https://629f04bc8b939d3dc28c9f9a.mockapi.io/favorites', obj);
+    // prev - it`s prevState your useState first argument
+    setCartItems(prev => [obj, ...prev]);
+  }
+
   // remove sneakers from card after cross click
   const onRemoveItem = (id: number) => {
     // remove items from cart array at mockapi
@@ -55,13 +65,13 @@ function App() {
     setCartItems(prev => prev.filter(item => item.id !== id));
   }
 
-  // serch input listener
+  // search input listener
   const onChangeSearchInput = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.currentTarget.value);
   }
 
-  // clear serch input
-  const onClearSerchInput = () => {
+  // clear search input
+  const onClearSearchInput = () => {
     setSearchValue('');
   }
 
@@ -69,6 +79,10 @@ function App() {
     <div className="wrapper">
       {cartOpened && <Drawer items={cartItems} onClickCart={onClickCart} onRemoveItem={onRemoveItem}/>}
       <Header onClickCart={onClickCart}/>
+
+      <Routes>
+        <Route path="/favorites" element={<Header onClickCart={onClickCart}/>}></Route>
+      </Routes>
 
       <div className="content">
         <header className="contentHeader">
@@ -82,7 +96,7 @@ function App() {
                    type="text"
                    placeholder="Search..."/>
             {searchValue &&
-              <button onClick={onClearSerchInput}
+              <button onClick={onClearSearchInput}
                       className="searchCloseButton">
                 <img src="img/btn-remove.svg" alt="clear icon"/>
               </button>}
@@ -97,7 +111,7 @@ function App() {
                       imgUrl={item.imgUrl}
                       title={item.title}
                       price={item.price}
-                      onClickFavorite={() => console.log('favorite')}
+                      onAddToFavorites={(obj) => onAddToFavorites(obj)}
                       onPlus={(obj) => onAddToCart(obj)}
                 />
               )

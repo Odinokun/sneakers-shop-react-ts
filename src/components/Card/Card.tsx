@@ -8,12 +8,13 @@ export type CardType = {
   imgUrl: string
   title: string
   price: number
-  onClickFavorite: () => void
+  onAddToFavorites: ({id, imgUrl, title, price}: cardObj) => void
   onPlus: ({id, imgUrl, title, price}: cardObj) => void
 }
 
-export const Card = ({id, imgUrl, title, price, onClickFavorite, onPlus}: CardType) => {
+export const Card = ({id, imgUrl, title, price, onAddToFavorites, onPlus}: CardType) => {
   const [isAdded, setIsAdded] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   // added sneakers to card after cross click
   // and change button color
@@ -22,10 +23,17 @@ export const Card = ({id, imgUrl, title, price, onClickFavorite, onPlus}: CardTy
     setIsAdded(!isAdded);
   }
 
+  // added sneakers to favorite after heart click
+  // and change button color
+  const onClickFavorite = () => {
+    onAddToFavorites({id, imgUrl, title, price})
+    setIsFavorite(!isFavorite);
+  }
+
   return (
     <div className={s.card}>
       <button onClick={onClickFavorite} className={s.favorite}>
-        <img src="/img/heart-unliked.svg" alt="unliked"/>
+        <img src={isFavorite ? '/img/heart-liked.svg' : '/img/heart-unliked.svg'} alt="favorite"/>
       </button>
       <img className={s.cardImage} src={imgUrl} alt="sneakers"/>
       <h5 className={s.cardTitle}>{title}</h5>
