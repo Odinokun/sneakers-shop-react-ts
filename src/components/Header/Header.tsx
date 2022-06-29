@@ -9,7 +9,7 @@ type PropsType = {
 export const Header = (props: PropsType) => {
   return (
     <header className={s.header}>
-      <NavLink to='/home' className={s.headerLeft}>
+      <NavLink to='/' className={s.headerLeft}>
         <img width={40} height={40} src='/img/logo.png' alt="React Sneakers"/>
         <div>
           <h3 className={s.headerInfoTitle}>React Sneakers</h3>
