@@ -1,5 +1,4 @@
 import React from "react";
-import {NavLink} from 'react-router-dom';
 
 type PropsType = {
   onClickCart: () => void
@@ -9,9 +8,7 @@ export const Header = (props: PropsType) => {
   return (
     <header className='header'>
       <div className="headerLeft">
-        <NavLink to="/home">
-          <img width={40} height={40} src='/img/logo.png' alt="React Snikers"/>
-        </NavLink>
+        <img width={40} height={40} src='/img/logo.png' alt="React Snikers"/>
         <div className="headerInfo">
           <h3 className="headerInfoTitle">React Sneakers</h3>
           <p className="headerInfoSlogan">The best sneakers in the world</p>
@@ -19,15 +16,12 @@ export const Header = (props: PropsType) => {
       </div>
 
       <ul className="headerRight">
-        <li className="basketBtn headerRightMenuItem" onClick={props.onClickCart}>
-          <img src="/img/cart.svg" alt="cart"/>
+        <li className="basketBtn" onClick={props.onClickCart}>
+          <img src="/img/cart.svg" alt="cart icon"/>
           <span>$ 1205</span>
         </li>
-        <NavLink to="/favorites" className="headerRightMenuItem">
-          <img src="/img/favorite-heart.svg" alt="favorite"/>
-        </NavLink>
-        <li className="headerRightMenuItem">
-          <img src="/img/user.svg" alt="user"/>
+        <li>
+          <img src="/img/user.svg" alt="user icon"/>
         </li>
       </ul>
     </header>
