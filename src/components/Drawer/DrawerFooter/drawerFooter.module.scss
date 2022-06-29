@@ -1,0 +1,78 @@
+.drawerFooter {
+  margin-top: auto;
+  padding: 0;
+  list-style: none;
+}
+
+.drawerFooterItem {
+  display: flex;
+  margin-bottom: 19px;
+
+  &:last-child {
+    margin-bottom: 24px;
+  }
+}
+
+.drawerFooterTitle {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+}
+
+.drawerFooterDecor {
+  flex: 1;
+  margin: 0 10px;
+  border-bottom: 1px dashed #dfdfdf;
+}
+
+.drawerFooterPrice {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 19px;
+}
+
+.drawerFooterBtn {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding: 18px 30px;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color .3s ease-in-out;
+  text-align: center;
+  border: none;
+  border-radius: 18px;
+  background-color: #9dd558;
+  box-shadow: none;
+
+  &:hover {
+    background-color: lighten(#9dd558, 7%);
+
+    img {
+      transform: translateX(5px);
+    }
+  }
+
+  &:active {
+    background-color: darken(#9dd558, 7%);
+  }
+
+  span {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 19px;
+    color: #fff;
+  }
+
+  img {
+    position: absolute;
+    top: 0;
+    right: 33px;
+    bottom: 0;
+    display: block;
+    width: 14px;
+    height: 12px;
+    margin: auto;
+    transition: transform .2s ease-in-out;
+  }
+}

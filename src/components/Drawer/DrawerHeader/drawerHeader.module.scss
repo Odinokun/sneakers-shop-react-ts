@@ -1,0 +1,32 @@
+
+.drawerHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.drawerTitle {
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+.drawerHeaderBtn {
+  flex: none;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  cursor: pointer;
+  transition: opacity .3s ease-in-out;
+  opacity: 1;
+  border: none;
+  background-color: transparent;
+  box-shadow: none;
+
+  &:hover {
+    opacity: .5;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+  }
+}
