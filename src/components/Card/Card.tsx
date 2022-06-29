@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import s from "./card.module.scss";
 import {log} from 'util';
-import {cardObj} from '../../App';
+import {CardObj} from '../../App';
 
 export type CardType = {
   id: number
@@ -9,7 +9,7 @@ export type CardType = {
   title: string
   price: number
   onClickFavorite: () => void
-  onPlus: ({id, imgUrl, title, price}: cardObj) => void
+  onPlus: ({id, imgUrl, title, price}: CardObj) => void
 }
 
 export const Card = ({id, imgUrl, title, price, onClickFavorite, onPlus}: CardType) => {
