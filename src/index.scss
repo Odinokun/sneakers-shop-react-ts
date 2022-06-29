@@ -123,6 +123,76 @@ body {
   }
 }
 
+.emptyBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  p {
+    margin-bottom: 30px;
+    text-align: center;
+  }
+}
+
+.emptyImage {
+  max-width: 80%;
+  margin-bottom: 50px;
+
+  img {
+    display: block;
+    width: 100%;
+  }
+}
+
+.emptyButton {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 18px 30px;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color .3s ease-in-out;
+  text-align: center;
+  border: none;
+  border-radius: 18px;
+  background-color: #9dd558;
+  box-shadow: none;
+
+  &:hover {
+    background-color: lighten(#9dd558, 7%);
+
+    img {
+      transform: rotate(180deg) translateX(5px);
+    }
+  }
+
+  &:active {
+    background-color: darken(#9dd558, 7%);
+  }
+
+  span {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 19px;
+    color: #fff;
+  }
+
+  img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 33px;
+    display: block;
+    flex: none;
+    width: 14px;
+    height: 12px;
+    margin: auto;
+    transition: transform .2s ease-in-out;
+    transform: rotate(180deg);
+  }
+}
+
 .drawerFooter {
   margin-top: auto;
   padding: 0;
@@ -231,16 +301,16 @@ body {
 .headerRight {
   display: flex;
   list-style: none;
+}
 
-  li {
-    display: flex;
-    align-items: center;
-    margin-left: 30px;
-    cursor: pointer;
+.headerRightMenuItem {
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
+  cursor: pointer;
 
-    span {
-      margin-left: 10px;
-    }
+  span {
+    margin-left: 10px;
   }
 }
 

@@ -24,3 +24,4 @@ yarn-error.log*
 
 /.idea
 /src/_temp
+/src/config.json
