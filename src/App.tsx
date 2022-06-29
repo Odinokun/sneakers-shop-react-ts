@@ -30,17 +30,32 @@ function App() {
     axios.get(`https://${process.env.REACT_APP_API_ENDPOINT}/items`).then(res => {
       setItems(res.data)
     })
+    axios.get(`https://${process.env.REACT_APP_API_ENDPOINT}/cart`).then(res => {
+      setCartItems(res.data)
+    })
   }, [])
 
-  // added sneakers to card after cross click
+  // added sneakers to cart after cross click
   const onAddToCart = (obj: CardObj) => {
+    // added sneakers to cart from backend
+    axios.post(`https://${process.env.REACT_APP_API_ENDPOINT}/cart`, obj);
     // prev - it`s prevState, your useState first argument
     setCartItems(prev => [obj, ...prev]);
   }
 
+  // remove sneakers from cart after delete click
+  const onRemoveFromCart = (id: number) => {
+    // remove sneakers from cart on backend
+    axios.delete(`https://${process.env.REACT_APP_API_ENDPOINT}/cart/${id}`);
+    // prev - it`s prevState, your useState first argument
+    setCartItems(prev => prev.filter(item => item.id !== id));
+  }
+
   return (
     <div className="wrapper">
-      {cartOpened && <Drawer items={cartItems} onClickCart={onClickCart}/>}
+      {cartOpened && <Drawer items={cartItems}
+                             onClickCart={onClickCart}
+                             onRemoveFromCart={onRemoveFromCart}/>}
       <Header onClickCart={onClickCart}/>
 
       <div className="content">

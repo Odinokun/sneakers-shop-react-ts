@@ -9,6 +9,7 @@ import {DrawerFooter} from './DrawerFooter/DrawerFooter';
 type PropsType = {
   onClickCart: () => void
   items: Array<CardObj>
+  onRemoveFromCart: (id: number) => void
 }
 
 export const Drawer = (props: PropsType) => {
@@ -18,7 +19,7 @@ export const Drawer = (props: PropsType) => {
       <div className={s.drawer}>
 
         <DrawerHeader onClickCart={props.onClickCart}/>
-        <DrawerItems items={props.items}/>
+        <DrawerItems items={props.items} onRemoveFromCart={props.onRemoveFromCart}/>
         <DrawerFooter/>
 
       </div>

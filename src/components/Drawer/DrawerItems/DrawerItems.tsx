@@ -4,6 +4,7 @@ import {CardObj} from '../../../App';
 
 type PropsType = {
   items: Array<CardObj>
+  onRemoveFromCart: (id: number) => void
 }
 
 export const DrawerItems = (props: PropsType) => {
@@ -19,7 +20,7 @@ export const DrawerItems = (props: PropsType) => {
               <h5 className={s.cartItemTitle}>{obj.title}</h5>
               <div className={s.cartItemPrice}><b>$ {obj.price}</b></div>
             </div>
-            <button className={s.cartItemButton}>
+            <button className={s.cartItemButton} onClick={() => props.onRemoveFromCart(obj.id)}>
               <img src="/img/btn-remove.svg" alt="remove"/>
             </button>
           </div>
