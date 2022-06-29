@@ -47,6 +47,7 @@ function App() {
   const onRemoveFromCart = (id: number) => {
     // remove sneakers from cart on backend
     axios.delete(`https://${process.env.REACT_APP_API_ENDPOINT}/cart/${id}`);
+
     // prev - it`s prevState, your useState first argument
     setCartItems(prev => prev.filter(item => item.id !== id));
   }
@@ -60,7 +61,7 @@ function App() {
 
       <div className="content">
         <Routes>
-          <Route path="/home" element={
+          <Route path="/" element={
             <Home items={items} onAddToCart={onAddToCart}/>
           }></Route>
           <Route path="/favorites" element={

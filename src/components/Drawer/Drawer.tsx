@@ -5,6 +5,7 @@ import {CardObj} from '../../App';
 import {DrawerItems} from './DrawerItems/DrawerItems';
 import {DrawerHeader} from './DrawerHeader/DrawerHeader';
 import {DrawerFooter} from './DrawerFooter/DrawerFooter';
+import {DrawerEmpty} from './DrawerEmpty/DrawerEmpty';
 
 type PropsType = {
   onClickCart: () => void
@@ -19,9 +20,15 @@ export const Drawer = (props: PropsType) => {
       <div className={s.drawer}>
 
         <DrawerHeader onClickCart={props.onClickCart}/>
-        <DrawerItems items={props.items} onRemoveFromCart={props.onRemoveFromCart}/>
-        <DrawerFooter/>
-
+        {
+          props.items.length > 0 ?
+            <>
+              <DrawerItems items={props.items} onRemoveFromCart={props.onRemoveFromCart}/>
+              <DrawerFooter/>
+            </>
+            :
+            <DrawerEmpty onClickCart={props.onClickCart}/>
+        }
       </div>
     </>
   )

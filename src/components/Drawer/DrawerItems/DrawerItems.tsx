@@ -11,8 +11,8 @@ export const DrawerItems = (props: PropsType) => {
   return (
     <div className={s.items}>
       {
-        props.items.map((obj: CardObj) => (
-          <div className={s.cartItem} key={obj.id}>
+        props.items.map((obj: CardObj, index) => (
+          <div className={s.cartItem} key={index}>
             <img className={s.cartItemImage}
                  src={obj.imgUrl} alt="sneakers"/>
             <div className={s.cartItemInfo}>

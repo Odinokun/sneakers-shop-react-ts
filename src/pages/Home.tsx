@@ -27,8 +27,8 @@ export const Home = (props: PropsType) => {
       <div className="cardWrapper">
         {props.items
           .filter(item => item.title.toLowerCase().includes(searchValue.toLowerCase()))
-          .map((item: CardType) => (
-              <Card key={item.id}
+          .map((item: CardType, index) => (
+              <Card key={index}
                     id={item.id}
                     imgUrl={item.imgUrl}
                     title={item.title}
