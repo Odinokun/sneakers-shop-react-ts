@@ -23,7 +23,7 @@ function App() {
   const [items, setItems] = useState<Array<CardType>>([]); //main cards arr
   const [cartItems, setCartItems] = useState<Array<CardObj>>([]); //cards in cart
   const [cartOpened, setCartOpened] = useState(false); //open-close cart
-  const [search, setSearch] = useState(''); //input state
+
 
   //first rendering product cart on first page load
   useEffect(() => {
@@ -38,11 +38,6 @@ function App() {
     setCartItems(prev => [obj, ...prev]);
   }
 
-  // input search
-  const onInputChange = () => {
-    console.log(123)
-  }
-
   return (
     <div className="wrapper">
       {cartOpened && <Drawer items={cartItems} onClickCart={onClickCart}/>}
@@ -51,7 +46,7 @@ function App() {
       <div className="content">
         <Routes>
           <Route path="/home" element={
-            <Home items={items} onAddToCart={onAddToCart} onInputChange={onInputChange}/>
+            <Home items={items} onAddToCart={onAddToCart}/>
           }></Route>
           <Route path="/favorites" element={
             <Favorites/>
