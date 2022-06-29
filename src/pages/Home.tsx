@@ -6,12 +6,13 @@ import {CardObj} from '../App';
 type PropsType = {
   items: Array<CardType>
   onAddToCart: (obj: CardObj) => void
+  onInputChange: () => void
 }
 
 export const Home = (props: PropsType) => {
   return (
     <>
-      <ContentHeader/>
+      <ContentHeader onInputChange={props.onInputChange}/>
 
       <div className="cardWrapper">
         {props.items.map((item: CardType) => (

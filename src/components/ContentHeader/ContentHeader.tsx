@@ -1,7 +1,9 @@
 import s from './contentHeader.module.scss'
 import React from 'react';
 
-type PropsType = {};
+type PropsType = {
+  onInputChange: () => void
+};
 
 export const ContentHeader = (props: PropsType) => {
   return (
@@ -11,7 +13,7 @@ export const ContentHeader = (props: PropsType) => {
         <button>
           <img src="img/search.svg" alt="search icon"/>
         </button>
-        <input type="text" placeholder="Search..."/>
+        <input onChange={props.onInputChange} type="text" placeholder="Search..."/>
       </div>
     </header>
   )
