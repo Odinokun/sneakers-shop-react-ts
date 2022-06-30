@@ -33,7 +33,6 @@ export const Home = (props: PropsType) => {
                     imgUrl={item.imgUrl}
                     title={item.title}
                     price={item.price}
-                    onClickFavorite={() => console.log('favorite')}
                     onPlus={(obj) => props.onAddToCart(obj)}
               />
             )
