@@ -54,10 +54,19 @@ function App() {
   }
 
   // added sneakers to favorites after heart click
-  const onAddToFavorites = (obj: CardObj) => {
-    axios.post(`https://${process.env.REACT_APP_API_ENDPOINT}/favorites`, obj);
-    // prev - it`s prevState, your useState first argument
-    setFavorites(prev => [obj, ...prev]);
+  const onAddToFavorites = async (obj: CardObj) => {
+    try {
+      if (favorites.find(item => item.id === obj.id)) {
+        axios.delete(`https://${process.env.REACT_APP_API_ENDPOINT}/favorites/${obj.id}`);
+        setFavorites(prev => prev.filter(item => item.id !== obj.id));
+      } else {
+        const {data} = await axios.post(`https://${process.env.REACT_APP_API_ENDPOINT}/favorites`, obj);
+        // prev - it`s prevState, your useState first argument
+        setFavorites(prev => [...prev, data]);
+      }
+    } catch (error) {
+      alert('Do not added to favorites');
+    }
   }
 
   return (
