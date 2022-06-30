@@ -9,9 +9,10 @@ export type CardType = {
   title: string
   price: number
   onPlus: ({id, imgUrl, title, price}: CardObj) => void
+  onFavorites: ({id, imgUrl, title, price}: CardObj) => void
 }
 
-export const Card = ({id, imgUrl, title, price, onPlus}: CardType) => {
+export const Card = ({id, imgUrl, title, price, onPlus, onFavorites}: CardType) => {
   const [isAdded, setIsAdded] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
 
@@ -25,6 +26,7 @@ export const Card = ({id, imgUrl, title, price, onPlus}: CardType) => {
   // added sneakers to favorites after cross click
   // and change button color
   const onClickFavorite = () => {
+    onFavorites({id, imgUrl, title, price});
     setIsFavorite(!isFavorite);
   }
 

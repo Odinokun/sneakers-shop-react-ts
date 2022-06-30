@@ -22,6 +22,7 @@ function App() {
 
   const [items, setItems] = useState<Array<CardType>>([]); //main cards arr
   const [cartItems, setCartItems] = useState<Array<CardObj>>([]); //cards in cart
+  const [favorites, setFavorites] = useState<Array<CardObj>>([]); //cards in favorites
   const [cartOpened, setCartOpened] = useState(false); //open-close cart
 
 
@@ -33,11 +34,13 @@ function App() {
     axios.get(`https://${process.env.REACT_APP_API_ENDPOINT}/cart`).then(res => {
       setCartItems(res.data)
     })
+    axios.get(`https://${process.env.REACT_APP_API_ENDPOINT}/favorites`).then(res => {
+      setFavorites(res.data)
+    })
   }, [])
 
   // added sneakers to cart after cross click
   const onAddToCart = (obj: CardObj) => {
-    // added sneakers to cart from backend
     axios.post(`https://${process.env.REACT_APP_API_ENDPOINT}/cart`, obj);
     // prev - it`s prevState, your useState first argument
     setCartItems(prev => [obj, ...prev]);
@@ -45,11 +48,16 @@ function App() {
 
   // remove sneakers from cart after delete click
   const onRemoveFromCart = (id: number) => {
-    // remove sneakers from cart on backend
     axios.delete(`https://${process.env.REACT_APP_API_ENDPOINT}/cart/${id}`);
-
     // prev - it`s prevState, your useState first argument
     setCartItems(prev => prev.filter(item => item.id !== id));
+  }
+
+  // added sneakers to favorites after heart click
+  const onAddToFavorites = (obj: CardObj) => {
+    axios.post(`https://${process.env.REACT_APP_API_ENDPOINT}/favorites`, obj);
+    // prev - it`s prevState, your useState first argument
+    setFavorites(prev => [obj, ...prev]);
   }
 
   return (
@@ -62,10 +70,15 @@ function App() {
       <div className="content">
         <Routes>
           <Route path="/" element={
-            <Home items={items} onAddToCart={onAddToCart}/>
+            <Home items={items}
+                  onAddToCart={onAddToCart}
+                  onAddToFavorites={onAddToFavorites}
+            />
           }></Route>
           <Route path="/favorites" element={
-            <Favorites/>
+            <Favorites favorites={favorites}
+                       onAddToCart={onAddToCart}
+                       onAddToFavorites={onAddToFavorites}/>
           }></Route>
         </Routes>
       </div>
