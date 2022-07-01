@@ -41,9 +41,18 @@ function App() {
 
   // added sneakers to cart after cross click
   const onAddToCart = (obj: CardObj) => {
-    axios.post(`https://${process.env.REACT_APP_API_ENDPOINT}/cart`, obj);
-    // prev - it`s prevState, your useState first argument
-    setCartItems(prev => [obj, ...prev]);
+    try {
+      if (cartItems.find(item => item.id === obj.id)) {
+        setCartItems(prev => prev.filter(item => item.id !== obj.id))
+        axios.delete(`https://${process.env.REACT_APP_API_ENDPOINT}/cart/${obj.id}`);
+      } else {
+        axios.post(`https://${process.env.REACT_APP_API_ENDPOINT}/cart`, obj);
+        // prev - it`s prevState, your useState first argument
+        setCartItems(prev => [obj, ...prev]);
+      }
+    } catch (error) {
+      alert('Do not added to cart');
+    }
   }
 
   // remove sneakers from cart after delete click
