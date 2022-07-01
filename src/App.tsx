@@ -42,9 +42,9 @@ function App() {
   // added sneakers to cart after cross click
   const onAddToCart = (obj: CardObj) => {
     try {
-      if (cartItems.find(item => item.id === obj.id)) {
-        setCartItems(prev => prev.filter(item => item.id !== obj.id))
+      if (cartItems.find(item => +item.id === +obj.id)) {
         axios.delete(`https://${process.env.REACT_APP_API_ENDPOINT}/cart/${obj.id}`);
+        setCartItems(prev => prev.filter(item => +item.id !== +obj.id))
       } else {
         axios.post(`https://${process.env.REACT_APP_API_ENDPOINT}/cart`, obj);
         // prev - it`s prevState, your useState first argument
