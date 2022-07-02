@@ -6,6 +6,8 @@ import {Favorites} from './pages/Favorites';
 import {CardType} from './components/Card/Card';
 import {Route, Routes} from 'react-router-dom';
 import axios from 'axios';
+import {types} from 'node-sass';
+import Number = types.Number;
 
 export type CardObj = {
   id: number
@@ -42,9 +44,9 @@ function App() {
   // added sneakers to cart after cross click
   const onAddToCart = (obj: CardObj) => {
     try {
-      if (cartItems.find(item => +item.id === +obj.id)) {
+      if (cartItems.find(item => Number(item.id) === Number(obj.id))) {
         axios.delete(`https://${process.env.REACT_APP_API_ENDPOINT}/cart/${obj.id}`);
-        setCartItems(prev => prev.filter(item => +item.id !== +obj.id))
+        setCartItems(prev => prev.filter(item => Number(item.id) !== Number(obj.id)))
       } else {
         axios.post(`https://${process.env.REACT_APP_API_ENDPOINT}/cart`, obj);
         // prev - it`s prevState, your useState first argument
