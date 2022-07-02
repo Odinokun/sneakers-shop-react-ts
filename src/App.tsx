@@ -6,8 +6,6 @@ import {Favorites} from './pages/Favorites';
 import {CardType} from './components/Card/Card';
 import {Route, Routes} from 'react-router-dom';
 import axios from 'axios';
-import {types} from 'node-sass';
-import Number = types.Number;
 
 export type CardObj = {
   id: number
@@ -30,23 +28,25 @@ function App() {
 
   //first rendering product cart on first page load
   useEffect(() => {
-    axios.get(`https://${process.env.REACT_APP_API_ENDPOINT}/items`).then(res => {
-      setItems(res.data)
-    })
-    axios.get(`https://${process.env.REACT_APP_API_ENDPOINT}/cart`).then(res => {
-      setCartItems(res.data)
-    })
-    axios.get(`https://${process.env.REACT_APP_API_ENDPOINT}/favorites`).then(res => {
-      setFavorites(res.data)
-    })
+    async function fetchData() {
+      const cartResponse = await axios.get(`https://${process.env.REACT_APP_API_ENDPOINT}/cart`);
+      const favoritesResponse = await axios.get(`https://${process.env.REACT_APP_API_ENDPOINT}/favorites`);
+      const itemsResponse = await axios.get(`https://${process.env.REACT_APP_API_ENDPOINT}/items`);
+
+      setCartItems(cartResponse.data)
+      setFavorites(favoritesResponse.data)
+      setItems(itemsResponse.data)
+    }
+
+    fetchData();
   }, [])
 
   // added sneakers to cart after cross click
   const onAddToCart = (obj: CardObj) => {
     try {
-      if (cartItems.find(item => Number(item.id) === Number(obj.id))) {
+      if (cartItems.find(item => +item.id === +obj.id)) {
         axios.delete(`https://${process.env.REACT_APP_API_ENDPOINT}/cart/${obj.id}`);
-        setCartItems(prev => prev.filter(item => Number(item.id) !== Number(obj.id)))
+        setCartItems(prev => prev.filter(item => +item.id !== +obj.id))
       } else {
         axios.post(`https://${process.env.REACT_APP_API_ENDPOINT}/cart`, obj);
         // prev - it`s prevState, your useState first argument
@@ -91,6 +91,7 @@ function App() {
         <Routes>
           <Route path="/" element={
             <Home items={items}
+                  cartItems={cartItems}
                   onAddToCart={onAddToCart}
                   onAddToFavorites={onAddToFavorites}
             />

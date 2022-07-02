@@ -23,6 +23,8 @@ export const Favorites = (props: PropsType) => {
                   price={item.price}
                   onPlus={(obj: CardObj) => props.onAddToCart(obj)}
                   onFavorites={(obj: CardObj) => props.onAddToFavorites(obj)}
+                  favorited={false}
+                  added={false}
             />
           )
         )}

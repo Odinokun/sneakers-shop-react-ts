@@ -5,6 +5,7 @@ import {CardObj} from '../App';
 
 type PropsType = {
   items: Array<CardType>
+  cartItems: Array<CardObj>
   onAddToCart: (obj: CardObj) => void
   onAddToFavorites: (obj: CardObj) => void
 }
@@ -36,6 +37,8 @@ export const Home = (props: PropsType) => {
                     price={item.price}
                     onPlus={(obj: CardObj) => props.onAddToCart(obj)}
                     onFavorites={(obj: CardObj) => props.onAddToFavorites(obj)}
+                    favorited={false}
+                    added={props.cartItems.some(obj => +obj.id === +item.id)}
               />
             )
           )}
