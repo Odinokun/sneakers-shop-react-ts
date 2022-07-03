@@ -24,14 +24,19 @@ function App() {
   const [cartItems, setCartItems] = useState<Array<CardObj>>([]); //cards in cart
   const [favorites, setFavorites] = useState<Array<CardObj>>([]); //cards in favorites
   const [cartOpened, setCartOpened] = useState(false); //open-close cart
+  const [isLoading, setIsLoading] = useState(true); //loading state
 
 
   //first rendering product cart on first page load
   useEffect(() => {
     async function fetchData() {
+      setIsLoading(true);
+
       const cartResponse = await axios.get(`https://${process.env.REACT_APP_API_ENDPOINT}/cart`);
       const favoritesResponse = await axios.get(`https://${process.env.REACT_APP_API_ENDPOINT}/favorites`);
       const itemsResponse = await axios.get(`https://${process.env.REACT_APP_API_ENDPOINT}/items`);
+
+      setIsLoading(false);
 
       setCartItems(cartResponse.data)
       setFavorites(favoritesResponse.data)
@@ -94,12 +99,15 @@ function App() {
                   cartItems={cartItems}
                   onAddToCart={onAddToCart}
                   onAddToFavorites={onAddToFavorites}
+                  isLoading={isLoading}
             />
           }></Route>
           <Route path="/favorites" element={
             <Favorites favorites={favorites}
                        onAddToCart={onAddToCart}
-                       onAddToFavorites={onAddToFavorites}/>
+                       onAddToFavorites={onAddToFavorites}
+                       isLoading={isLoading}
+            />
           }></Route>
         </Routes>
       </div>

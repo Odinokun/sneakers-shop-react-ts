@@ -2,12 +2,14 @@ import {ContentHeader} from '../components/ContentHeader/ContentHeader';
 import {Card, CardType} from '../components/Card/Card';
 import React, {useState} from 'react';
 import {CardObj} from '../App';
+import {log} from 'util';
 
 type PropsType = {
   items: Array<CardType>
   cartItems: Array<CardObj>
   onAddToCart: (obj: CardObj) => void
   onAddToFavorites: (obj: CardObj) => void
+  isLoading: boolean
 }
 
 export const Home = (props: PropsType) => {
@@ -16,6 +18,27 @@ export const Home = (props: PropsType) => {
   // input search
   const onSearchInputChange = (value: string) => {
     setSearchValue(value)
+  }
+
+  const renderItems = () => {
+    const filteredItems = props.items && props.items.filter(item => item.title.toLowerCase().includes(searchValue.toLowerCase()))
+
+    return (props.isLoading ? [...Array(10)] : filteredItems
+        .map((item: CardType) => (
+            <Card key={item.id}
+                  id={item.id}
+                  imgUrl={item.imgUrl}
+                  title={item.title}
+                  price={item.price}
+                  onPlus={(obj: CardObj) => props.onAddToCart(obj)}
+                  onFavorites={(obj: CardObj) => props.onAddToFavorites(obj)}
+                  favorited={false}
+                  added={props.cartItems.some(obj => +obj.id === +item.id)}
+                  loading={props.isLoading}
+            />
+          )
+        )
+    )
   }
 
   return (
@@ -27,21 +50,7 @@ export const Home = (props: PropsType) => {
       />
 
       <div className="cardWrapper">
-        {props.items
-          .filter(item => item.title.toLowerCase().includes(searchValue.toLowerCase()))
-          .map((item: CardType, index) => (
-              <Card key={index}
-                    id={item.id}
-                    imgUrl={item.imgUrl}
-                    title={item.title}
-                    price={item.price}
-                    onPlus={(obj: CardObj) => props.onAddToCart(obj)}
-                    onFavorites={(obj: CardObj) => props.onAddToFavorites(obj)}
-                    favorited={false}
-                    added={props.cartItems.some(obj => +obj.id === +item.id)}
-              />
-            )
-          )}
+        {renderItems()}
       </div>
     </>
   )

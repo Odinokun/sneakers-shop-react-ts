@@ -7,6 +7,7 @@ type PropsType = {
   favorites: Array<CardObj>
   onAddToCart: (obj: CardObj) => void
   onAddToFavorites: (obj: CardObj) => void
+  isLoading: boolean
 }
 
 export const Favorites = (props: PropsType) => {
@@ -14,21 +15,22 @@ export const Favorites = (props: PropsType) => {
     <>
       <FavoritesHeader/>
 
-      <div className="cardWrapper">
-        {props.favorites.map((item: CardObj, index) => (
-            <Card key={index}
-                  id={item.id}
-                  imgUrl={item.imgUrl}
-                  title={item.title}
-                  price={item.price}
-                  onPlus={(obj: CardObj) => props.onAddToCart(obj)}
-                  onFavorites={(obj: CardObj) => props.onAddToFavorites(obj)}
-                  favorited={false}
-                  added={false}
-            />
-          )
-        )}
-      </div>
+      {/*<div className="cardWrapper">*/}
+      {/*  {props.favorites.map((item: CardObj, index) => (*/}
+      {/*      <Card key={index}*/}
+      {/*            id={item.id}*/}
+      {/*            imgUrl={item.imgUrl}*/}
+      {/*            title={item.title}*/}
+      {/*            price={item.price}*/}
+      {/*            onPlus={(obj: CardObj) => props.onAddToCart(obj)}*/}
+      {/*            onFavorites={(obj: CardObj) => props.onAddToFavorites(obj)}*/}
+      {/*            favorited={false}*/}
+      {/*            added={false}*/}
+      {/*            loading={props.isLoading}*/}
+      {/*      />*/}
+      {/*    )*/}
+      {/*  )}*/}
+      {/*</div>*/}
     </>
   )
 }
