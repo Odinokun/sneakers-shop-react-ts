@@ -3,6 +3,8 @@ import {Card, CardType} from '../components/Card/Card';
 import React, {useState} from 'react';
 import {CardObj} from '../App';
 import {log} from 'util';
+import {Skeleton} from '../components/Sketeton/Skeleton';
+import s from '../components/Card/card.module.scss';
 
 type PropsType = {
   items: Array<CardType>
@@ -21,9 +23,8 @@ export const Home = (props: PropsType) => {
   }
 
   const renderItems = () => {
-    const filteredItems = props.items && props.items.filter(item => item.title.toLowerCase().includes(searchValue.toLowerCase()))
-
-    return (props.isLoading ? [...Array(10)] : filteredItems
+    return (
+      props.items.filter(item => item.title.toLowerCase().includes(searchValue.toLowerCase()))
         .map((item: CardType) => (
             <Card key={item.id}
                   id={item.id}
@@ -34,10 +35,23 @@ export const Home = (props: PropsType) => {
                   onFavorites={(obj: CardObj) => props.onAddToFavorites(obj)}
                   favorited={false}
                   added={props.cartItems.some(obj => +obj.id === +item.id)}
-                  loading={props.isLoading}
             />
           )
         )
+    )
+  }
+
+  const skeletonArray = () => {
+    let arr = [];
+    for (let i = 0; i < 12; i++) {
+      arr.push(<Skeleton/>)
+    }
+
+    return (
+      arr.map((item, index: number) => (
+        <div className={s.card} key={index}>
+          <Skeleton />
+        </div>))
     )
   }
 
@@ -50,7 +64,7 @@ export const Home = (props: PropsType) => {
       />
 
       <div className="cardWrapper">
-        {renderItems()}
+        {props.isLoading ? skeletonArray() : renderItems()}
       </div>
     </>
   )
