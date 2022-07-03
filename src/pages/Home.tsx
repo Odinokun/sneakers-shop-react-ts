@@ -42,7 +42,7 @@ export const Home = (props: PropsType) => {
   }
 
   const skeletonArray = () => {
-    let arr = [];
+    const arr = [];
     for (let i = 0; i < 12; i++) {
       arr.push(<Skeleton/>)
     }
