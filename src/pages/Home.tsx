@@ -2,7 +2,6 @@ import {ContentHeader} from '../components/ContentHeader/ContentHeader';
 import {Card, CardType} from '../components/Card/Card';
 import React, {useState} from 'react';
 import {CardObj} from '../App';
-import {log} from 'util';
 import {Skeleton} from '../components/Sketeton/Skeleton';
 import s from '../components/Card/card.module.scss';
 
@@ -42,10 +41,7 @@ export const Home = (props: PropsType) => {
   }
 
   const skeletonArray = () => {
-    const arr = [];
-    for (let i = 0; i < 12; i++) {
-      arr.push(<Skeleton/>)
-    }
+    const arr = [...Array(8)];
 
     return (
       arr.map((item, index: number) => (
