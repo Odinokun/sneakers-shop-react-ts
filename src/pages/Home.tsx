@@ -1,9 +1,9 @@
+import s from '../components/Card/card.module.scss';
+import React, {useState} from 'react';
 import {ContentHeader} from '../components/ContentHeader/ContentHeader';
 import {Card, CardType} from '../components/Card/Card';
-import React, {useState} from 'react';
 import {CardObj} from '../App';
 import {Skeleton} from '../components/Sketeton/Skeleton';
-import s from '../components/Card/card.module.scss';
 
 type PropsType = {
   items: Array<CardType>

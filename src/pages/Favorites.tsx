@@ -1,21 +1,23 @@
+import s from '../components/Card/card.module.scss';
+import React from 'react';
 import {FavoritesHeader} from '../components/FavoritesHeader/FavoritesHeader';
 import {Card} from '../components/Card/Card';
 import {CardObj} from '../App';
-import React from 'react';
-import s from '../components/Card/card.module.scss';
 import {Skeleton} from '../components/Sketeton/Skeleton';
+import AppContext from '../context';
 
 type PropsType = {
-  favorites: Array<CardObj>
   onAddToCart: (obj: CardObj) => void
   onAddToFavorites: (obj: CardObj) => void
   isLoading: boolean
 }
 
 export const Favorites = (props: PropsType) => {
+  const {favorites} = React.useContext<any>(AppContext);
+
   const renderItems = () => {
     return (
-      props.favorites.map((item: CardObj, index) => (
+      favorites.map((item: CardObj, index: number) => (
           <Card key={index}
                 id={item.id}
                 imgUrl={item.imgUrl}
