@@ -13,6 +13,7 @@ type PropsType = {
 }
 
 export const Favorites = (props: PropsType) => {
+  // TODO fixed any
   const {favorites} = React.useContext<any>(AppContext);
 
   const renderItems = () => {
@@ -25,8 +26,7 @@ export const Favorites = (props: PropsType) => {
                 price={item.price}
                 onPlus={(obj: CardObj) => props.onAddToCart(obj)}
                 onFavorites={(obj: CardObj) => props.onAddToFavorites(obj)}
-                favorited={false}
-                added={false}
+                favorited={true}
           />
         )
       )

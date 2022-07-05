@@ -33,7 +33,6 @@ export const Home = (props: PropsType) => {
                   onPlus={(obj: CardObj) => props.onAddToCart(obj)}
                   onFavorites={(obj: CardObj) => props.onAddToFavorites(obj)}
                   favorited={false}
-                  added={props.cartItems.some(obj => +obj.id === +item.id)}
             />
           )
         )

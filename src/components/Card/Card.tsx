@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import s from "./card.module.scss";
 import {CardObj} from '../../App';
+import AppContext from '../../context';
 
 export type CardType = {
   id: number
@@ -10,18 +11,17 @@ export type CardType = {
   onPlus: ({id, imgUrl, title, price}: CardObj) => void
   onFavorites: ({id, imgUrl, title, price}: CardObj) => void
   favorited: boolean
-  added: boolean
 }
 
-export const Card = ({id, imgUrl, title, price, onPlus, onFavorites, favorited, added}: CardType) => {
-  const [isAdded, setIsAdded] = useState<boolean>(added);
+export const Card = ({id, imgUrl, title, price, onPlus, onFavorites, favorited}: CardType) => {
+  // TODO fixed any
+  const {isItemAdded} = React.useContext<any>(AppContext);
   const [isFavorite, setIsFavorite] = useState<boolean>(favorited);
 
   // added sneakers to card after cross click
   // and change button color
   const onClickPlus = () => {
     onPlus({id, imgUrl, title, price});
-    setIsAdded(!isAdded);
   }
 
   // added sneakers to favorites after cross click
@@ -46,7 +46,7 @@ export const Card = ({id, imgUrl, title, price, onPlus, onFavorites, favorited, 
         <button
           className={s.button}
           onClick={onClickPlus}>
-          <img src={isAdded ? '/img/btn-checked.svg' : '/img/btn-plus.svg'} alt="plus"/>
+          <img src={isItemAdded(id) ? '/img/btn-checked.svg' : '/img/btn-plus.svg'} alt="plus"/>
         </button>
       </div>
     </div>
