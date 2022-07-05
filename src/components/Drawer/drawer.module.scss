@@ -4,12 +4,13 @@
   top: 0;
   left: 0;
   width: 100%;
-  min-height: 100vh;
+  bottom: 0;
+  height: 100vh;
   background-color: rgba(0, 0, 0, .5);
 }
 
 .drawer {
-  position: absolute;
+  position: fixed;
   z-index: 6;
   top: 0;
   right: 0;
