@@ -2,6 +2,7 @@ import React from 'react';
 import s from './drawerFooter.module.scss';
 import {useCart} from '../../../hooks/useCart';
 
+
 export const DrawerFooter = () => {
   const {totalPrice} = useCart();
 
