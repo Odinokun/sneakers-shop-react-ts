@@ -6,6 +6,7 @@ import {Favorites} from './pages/Favorites';
 import {CardType} from './components/Card/Card';
 import {Route, Routes} from 'react-router-dom';
 import axios from 'axios';
+import AppContext from './context';
 
 export type CardObj = {
   id: number
@@ -86,32 +87,35 @@ function App() {
   }
 
   return (
-    <div className="wrapper">
-      {cartOpened && <Drawer items={cartItems}
-                             onClickCart={onClickCart}
-                             onRemoveFromCart={onRemoveFromCart}/>}
-      <Header onClickCart={onClickCart}/>
+    <AppContext.Provider value={items}>
 
-      <div className="content">
-        <Routes>
-          <Route path="/" element={
-            <Home items={items}
-                  cartItems={cartItems}
-                  onAddToCart={onAddToCart}
-                  onAddToFavorites={onAddToFavorites}
-                  isLoading={isLoading}
-            />
-          }></Route>
-          <Route path="/favorites" element={
-            <Favorites favorites={favorites}
-                       onAddToCart={onAddToCart}
-                       onAddToFavorites={onAddToFavorites}
-                       isLoading={isLoading}
-            />
-          }></Route>
-        </Routes>
+      <div className="wrapper">
+        {cartOpened && <Drawer items={cartItems}
+                               onClickCart={onClickCart}
+                               onRemoveFromCart={onRemoveFromCart}/>}
+        <Header onClickCart={onClickCart}/>
+
+        <div className="content">
+          <Routes>
+            <Route path="/" element={
+              <Home items={items}
+                    cartItems={cartItems}
+                    onAddToCart={onAddToCart}
+                    onAddToFavorites={onAddToFavorites}
+                    isLoading={isLoading}
+              />
+            }></Route>
+            <Route path="/favorites" element={
+              <Favorites favorites={favorites}
+                         onAddToCart={onAddToCart}
+                         onAddToFavorites={onAddToFavorites}
+                         isLoading={isLoading}
+              />
+            }></Route>
+          </Routes>
+        </div>
       </div>
-    </div>
+    </AppContext.Provider>
   );
 }
 
