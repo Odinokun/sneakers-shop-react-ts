@@ -1,12 +1,19 @@
 import s from './header.module.scss'
 import React from "react";
 import {NavLink} from 'react-router-dom';
+import AppContext from '../../context';
+import {CardObj} from '../../App';
 
 type PropsType = {
   onClickCart: () => void
 }
 
 export const Header = (props: PropsType) => {
+  const {cartItems} = React.useContext<any>(AppContext);
+  const totalPrice = cartItems.reduce((sum: number, obj: CardObj) => +obj.price + +sum, 0);
+
+  console.log(totalPrice)
+
   return (
     <header className={s.header}>
       <NavLink to='/' className={s.headerLeft}>
@@ -20,7 +27,7 @@ export const Header = (props: PropsType) => {
       <ul className={s.headerRight}>
         <li className={s.headerRightItem} onClick={props.onClickCart}>
           <img src="/img/cart.svg" alt="cart icon"/>
-          <span>$ 1205</span>
+          <span>$ {totalPrice}</span>
         </li>
         <NavLink to="/favorites" className={s.headerRightItem}>
           <img src="/img/heart.svg" alt=""/>
