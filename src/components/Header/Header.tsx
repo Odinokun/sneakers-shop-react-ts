@@ -1,18 +1,14 @@
 import s from './header.module.scss'
 import React from "react";
 import {NavLink} from 'react-router-dom';
-import AppContext from '../../context';
-import {CardObj} from '../../App';
+import {useCart} from '../../hooks/useCart';
 
 type PropsType = {
   onClickCart: () => void
 }
 
 export const Header = (props: PropsType) => {
-  const {cartItems} = React.useContext<any>(AppContext);
-  const totalPrice = cartItems.reduce((sum: number, obj: CardObj) => +obj.price + +sum, 0);
-
-  console.log(totalPrice)
+  const {totalPrice} = useCart();
 
   return (
     <header className={s.header}>

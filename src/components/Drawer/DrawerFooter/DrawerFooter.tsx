@@ -1,13 +1,9 @@
 import React from 'react';
 import s from './drawerFooter.module.scss';
-import AppContext from '../../../context';
-import {CardObj} from '../../../App';
+import {useCart} from '../../../hooks/useCart';
 
-type PropsType = {}
-
-export const DrawerFooter = (props: PropsType) => {
-  const {cartItems} = React.useContext<any>(AppContext);
-  const totalPrice = cartItems.reduce((sum: number, obj: CardObj) => +obj.price + +sum, 0);
+export const DrawerFooter = () => {
+  const {totalPrice} = useCart();
 
   return (
     <>
