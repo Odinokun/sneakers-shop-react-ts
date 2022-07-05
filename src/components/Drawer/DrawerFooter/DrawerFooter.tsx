@@ -1,5 +1,7 @@
-import React from 'react';
 import s from './drawerFooter.module.scss';
+
+import React from 'react';
+
 import {useCart} from '../../../hooks/useCart';
 
 

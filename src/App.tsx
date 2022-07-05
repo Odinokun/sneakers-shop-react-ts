@@ -94,9 +94,11 @@ function App() {
     <AppContext.Provider value={{items, cartItems, favorites, isItemAdded}}>
 
       <div className="wrapper">
-        {cartOpened && <Drawer items={cartItems}
-                               onClickCart={onClickCart}
-                               onRemoveFromCart={onRemoveFromCart}/>}
+        {/*{cartOpened &&}*/}
+          <Drawer items={cartItems}
+                  onClickCart={onClickCart}
+                  onRemoveFromCart={onRemoveFromCart}
+                  opened={cartOpened}/>
         <Header onClickCart={onClickCart}/>
 
         <div className="content">

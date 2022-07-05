@@ -1,4 +1,5 @@
 import s from './contentHeader.module.scss'
+
 import React, {ChangeEvent} from 'react';
 
 type PropsType = {

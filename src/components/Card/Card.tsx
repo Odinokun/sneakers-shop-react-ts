@@ -1,7 +1,9 @@
-import React, {useState} from "react";
 import s from "./card.module.scss";
-import {CardObj} from '../../App';
+
+import React, {useState} from "react";
 import AppContext from '../../context';
+
+import {CardObj} from '../../App';
 
 export type CardType = {
   id: number

@@ -1,5 +1,6 @@
-import React from 'react';
 import s from './drawerHeader.module.scss';
+
+import React from 'react';
 
 type PropsType = {
   onClickCart: () => void

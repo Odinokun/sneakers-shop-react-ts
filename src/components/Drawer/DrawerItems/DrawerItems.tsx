@@ -1,6 +1,7 @@
-import s from './drawerItems.module.scss'
 import React from 'react';
+
 import {CardObj} from '../../../App';
+import s from './drawerItems.module.scss'
 
 type PropsType = {
   items: Array<CardObj>
